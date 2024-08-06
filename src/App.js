@@ -7,15 +7,22 @@ import BlogIndex from "pages/BlogIndex";
 // import Blog from "Blog.js";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import useFetch from "hooks/useFetch";
+
+
 
 export default function App() {
-
+  const {loading, error, data} = useFetch('http://localhost:1337/api/blogs?populate=*');
+  if (loading) return <p>loading...</p>
+  if(error) return console.log(error)
+  
+  // console.log(data.data[0].attributes.blogTitle)
 
   return (
     <Router>
       <Switch>
         <Route path="/">
-          <BlogIndex />
+          <BlogIndex posts = {data} />
         </Route>
       </Switch>
     </Router>
