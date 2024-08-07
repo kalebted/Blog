@@ -15,9 +15,6 @@
     "blogTitle": {
       "type": "string"
     },
-    "blogContent": {
-      "type": "blocks"
-    },
     "coverImage": {
       "type": "media",
       "multiple": false,
@@ -34,6 +31,9 @@
     },
     "author": {
       "type": "string"
+    },
+    "blogContent": {
+      "type": "richtext"
     }
   }
 }

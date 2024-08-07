@@ -4,7 +4,7 @@ import React from "react";
 // import { css } from "styled-components/macro"; //eslint-disable-line
 
 import BlogIndex from "pages/BlogIndex";
-// import Blog from "Blog.js";
+import Blog from "pages/Blog.js";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import useFetch from "hooks/useFetch";
@@ -21,9 +21,15 @@ export default function App() {
   return (
     <Router>
       <Switch>
-        <Route path="/">
-          <BlogIndex posts = {data} />
+
+        <Route path="/blog/:id">
+          <Blog posts = {data}/>
         </Route>
+
+        <Route path="/">
+          <BlogIndex posts={data} />
+        </Route>
+        
       </Switch>
     </Router>
   );

@@ -375,10 +375,10 @@ export interface ApiBlogBlog extends Schema.CollectionType {
   };
   attributes: {
     blogTitle: Attribute.String;
-    blogContent: Attribute.Blocks;
     coverImage: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     publishedDate: Attribute.Date;
     author: Attribute.String;
+    blogContent: Attribute.RichText;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

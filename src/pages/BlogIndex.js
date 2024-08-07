@@ -8,6 +8,12 @@ import Header from "components/headers/light.js";
 import Footer from "components/footers/FiveColumnWithInputForm.js";
 import { SectionHeading } from "components/misc/Headings";
 import { PrimaryButton } from "components/misc/Buttons";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 const HeadingRow = tw.div`flex`;
 const Heading = tw(SectionHeading)`text-gray-900`;
@@ -101,15 +107,17 @@ export default ({posts}
           <Posts>
             {posts.data.slice(0, visible).map((post, index) => (
               <PostContainer key={index} featured={post.featured}>
-                <Post className="group" as="a" href={post.url}>
-                  <Image imageSrc={`http://localhost:1337${post.attributes.coverImage.data.attributes.url}`} />
-                  <Info>
-                    <Category>{post.category}</Category>
-                    <CreationDate>{post.attributes.publishedDate}</CreationDate>
-                    <Title>{post.attributes.blogTitle}</Title>
-                    {post.featured && post.description && <Description>{post.description}</Description>}
-                  </Info>
-                </Post>
+                <Link to={`/blog/${post.id}`}>
+                  <Post className="group" as="a" href={post.url}>
+                    <Image imageSrc={`http://localhost:1337${post.attributes.coverImage.data.attributes.url}`} />
+                    <Info>
+                      <Category>{post.category}</Category>
+                      <CreationDate>{post.attributes.publishedDate}</CreationDate>
+                      <Title>{post.attributes.blogTitle}</Title>
+                      {post.featured && post.description && <Description>{post.description}</Description>}
+                    </Info>
+                  </Post>
+                </Link>
               </PostContainer>
             ))}
           </Posts>
